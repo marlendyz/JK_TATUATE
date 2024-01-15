@@ -1,47 +1,46 @@
 import { Request, Response } from "express";
-import { CreateUserRequestBody, LoginUserRequestBody, TokenData } from "../types/types";
-import { User } from "../models/User";
+import { CreateWorkersRequestBody, LoginUserRequestBody, TokenData } from "../types/types";
+import { Tatuate_workers } from "../models/Tatuate_workers";
 import { AppDataSource } from "../database/data-source";
 import bcrypt from "bcrypt";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
 
-export class AuthUserController {
+export class AuthWorkController {
   async register(
-    req: Request<{}, {}, CreateUserRequestBody>,
+    req: Request<{}, {}, CreateWorkersRequestBody>,
     res: Response
   ): Promise<void | Response<any>> {
-    const { username, first_name, last_name, password, email,  } =
+    const { nickname, first_name, last_name, password, email,  } =
       req.body;
 
-    const userRepository = AppDataSource.getRepository(User);
+    const artistRepository = AppDataSource.getRepository(Tatuate_workers);
     
     try {
-      const newUser: User = {
-          username,
-          first_name,
-          last_name,
-          email,
-          password: bcrypt.hashSync(password, 10),
-          
+      const newArtist: Tatuate_workers = {
+        nickname,
+        first_name,
+        last_name,
+        email,
+        password: bcrypt.hashSync(password, 10),
       };
 
-      await userRepository.save(newUser);
+      await artistRepository.save(newArtist);
 
       res.status(StatusCodes.CREATED).json({
-        message: "User created succesfully",
+        message: "Artist created succesfully",
       });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        message: "Error while creating user",
-      });
-    }
+       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+         message: "Error while creating Artist",
+       });
+     }
   }
   async login(req: Request<{}, {}, LoginUserRequestBody>, res: Response): Promise<void | Response<any>> {
     
         const { password, email,} = req.body;
     
-        const userRepository = AppDataSource.getRepository(User);
+        const artistRepository = AppDataSource.getRepository(Tatuate_workers);
         try {
           if(!email || !password){
             return res.status(StatusCodes.BAD_REQUEST).json({
@@ -49,7 +48,7 @@ export class AuthUserController {
             });
 
           }
-          const user = await userRepository.findOne({
+          const user = await artistRepository.findOne({
             where: {
               email: email,
             },
@@ -67,7 +66,12 @@ export class AuthUserController {
             });
           }
           
-        
+          // generar token
+
+          // const tokenPayload : TokenData = {
+          //   userId: user.id?.toString() as string,
+          //   userRoles: 
+          // }
     
           res.status(StatusCodes.OK).json({
             message: "login succesfully",

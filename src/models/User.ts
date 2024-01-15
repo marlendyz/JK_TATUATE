@@ -1,12 +1,12 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn,CreateDateColumn,
   UpdateDateColumn } from "typeorm";
-import { Appointment } from "./Appointments";
+// import { Appointment } from "./Appointments";
 
 
 @Entity("users")
 export class User{
   @PrimaryGeneratedColumn()
-  id!: number;
+  id?: number;
 
   @Column()
   username!: string;
@@ -32,6 +32,6 @@ export class User{
   @Column()
   active?: Number;
 
-  @OneToMany(() => Appointment, appointment => appointment.user)
-  appointments?: Appointment[];
+  //  @OneToMany(() => Appointment, appointment => appointment.user)
+  //  appointments?: Appointment[];
 }

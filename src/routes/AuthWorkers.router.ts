@@ -1,12 +1,13 @@
 import express from "express";
-import { AuthArtistController } from "../controllers/AuthArtistController";
+import {AuthWorkController} from "../controllers/AuthWorkerController";
+import { AuthUserController } from "../controllers/AuthUserController";
 
 // -----------------------------------------------------------------------------
 
 const router = express.Router();
-const authArtistController = new AuthArtistController();
+const AuthWorkerController = new AuthWorkController();
 
-router.post("/register", authArtistController.register);
-router.post("/login", authArtistController.login);
+router.post("/register", AuthWorkerController.register);
+router.post("/login", AuthWorkerController.login);
 
 export default router;
