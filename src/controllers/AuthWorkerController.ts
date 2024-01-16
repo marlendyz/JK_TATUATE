@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+// preguntar a rey sobre esto 
 import { CreateWorkersRequestBody, LoginUserRequestBody, TokenData } from "../types/types";
 import { Tatuate_workers } from "../models/Tatuate_workers";
 import { AppDataSource } from "../database/data-source";
@@ -14,7 +15,7 @@ export class AuthWorkController {
     const { nickname, first_name, last_name, password, email,  } =
       req.body;
 
-    const artistRepository = AppDataSource.getRepository(Tatuate_workers);
+    const workerRepository = AppDataSource.getRepository(Tatuate_workers);
     
     try {
       const newArtist: Tatuate_workers = {
@@ -25,7 +26,7 @@ export class AuthWorkController {
         password: bcrypt.hashSync(password, 10),
       };
 
-      await artistRepository.save(newArtist);
+      await workerRepository.save(newArtist);
 
       res.status(StatusCodes.CREATED).json({
         message: "Artist created succesfully",
@@ -40,7 +41,7 @@ export class AuthWorkController {
     
         const { password, email,} = req.body;
     
-        const artistRepository = AppDataSource.getRepository(Tatuate_workers);
+        const workerRepository = AppDataSource.getRepository(Tatuate_workers);
         try {
           if(!email || !password){
             return res.status(StatusCodes.BAD_REQUEST).json({
@@ -48,7 +49,7 @@ export class AuthWorkController {
             });
 
           }
-          const user = await artistRepository.findOne({
+          const user = await workerRepository.findOne({
             where: {
               email: email,
             },
@@ -66,13 +67,7 @@ export class AuthWorkController {
             });
           }
           
-          // generar token
-
-          // const tokenPayload : TokenData = {
-          //   userId: user.id?.toString() as string,
-          //   userRoles: 
-          // }
-    
+         
           res.status(StatusCodes.OK).json({
             message: "login succesfully",
           });

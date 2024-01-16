@@ -1,7 +1,8 @@
 import express from "express";
 import userRoutes from "./routes/users.routes";
 import authUserouter from "./routes/AuthUser.router"
-import { AuthWorkController } from "./controllers/AuthWorkerController";
+import { AuthWorrouter } from "./router/AuthWorkerrouter";
+
 
 // -----------------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ router.use("/api/users/:id", userRoutes);
 
 // artis routes
 
-router.use("/authWorkerController",);
+router.use("/authWorkerrouter", AuthWorrouter);
 
 
 export default router;

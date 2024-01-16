@@ -1,5 +1,6 @@
 import express from "express";
 import { UserController } from "../controllers/UserController";
+import { AuthWorkController } from "../controllers/AuthWorkerController";
 
 // -----------------------------------------------------------------------------
 
@@ -11,5 +12,6 @@ router.get("/:id", userController.getById);
 router.post("/", userController.create);
 router.patch("/:id", userController.update);
 router.delete("/:id", userController.delete);
+
 
 export default router;
