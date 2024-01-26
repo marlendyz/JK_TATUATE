@@ -45,7 +45,7 @@ Tecnologías utilizadas:
 
 ## Diagrama BD
 
-!['imagen-db'](./img/tatuateimg.png)
+!['imagen-db'](./src/img/tatuateimg.pnggit)
 
 ## Instalación en local
 
