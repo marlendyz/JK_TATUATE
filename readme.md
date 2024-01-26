@@ -1,4 +1,4 @@
-# Academy API REST
+# JK_TATUATE
 
 <details>
   <summary>Contenido 📝</summary>
@@ -20,21 +20,26 @@
 </details>
 
 ## Objetivo
-Este proyecto requería una API funcional conectada a una base de datos con al menos una relación de uno a muchos y una relación de muchos a muchos.
+
+Este proyecto requería una API funcional conectada a una base de datos.
 
 ## Sobre el proyecto
-Decidí crear una aplicación web para ayudar a los amantes del gimnasio, que les permitiría crear y realizar un seguimiento de nuevas rutinas para sus ejercicios diarios. He visto muchas apps de este estilo pero ninguna que nos permita cambiar tan libremente las rutinas adaptandolas a nuestras necesidades.    
+
+Decidí crear una aplicación web para ayudar a los amantes de los tatuajes, en donde les sea mas facil crear, modificar y borrar citas, asi como ver que citas son las que tiene. Todo con la intencion de aprovechar el tiempo pues es estos dias el tiempo es oro.
 
 ## Deploy 🚀
+
 <div align="center">
     <a href="https://www.google.com"><strong>Url a producción </strong></a>🚀🚀🚀
 </div>
 
 ## Stack
+
 Tecnologías utilizadas:
+
 <div align="center">
-<a href="https://www.mongodb.com/">
-    <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+<a href="https://www.mysql.com/">
+    <img src= https://shields.io/badge/MySQL-lightgrey?logo=mysql&style=plastic&logoColor=white&labelColor=blue/>
 </a>
 <a href="https://www.expressjs.com/">
     <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
@@ -47,103 +52,136 @@ Tecnologías utilizadas:
 </a>
  </div>
 
-
 ## Diagrama BD
-!['imagen-db'](./typeorm_academy.png)
+
+!['imagen-db'](.)
 
 ## Instalación en local
+
 1. Clonar el repositorio
-2. ` $ npm install `
-3. Conectamos nuestro repositorio con la base de datos 
-4. ``` $ Ejecutamos las migraciones ``` 
-5. ``` $ Ejecutamos los seeders ``` 
-6. ``` $ npm run dev ``` 
-7. ...
+2. `$ npm install`
+3. Conectamos nuestro repositorio con la base de datos
+4. `$ Ejecutamos las migraciones`
+5. `$ npm run dev`
 
 ## Endpoints
+
 <details>
 <summary>Endpoints</summary>
 
 - AUTH
-    - REGISTER
 
-            POST http://localhost:3000/api/register
-        body:
-        ``` js
-            {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
-            }
-        ```
+- REGISTER USER
 
-    - LOGIN
+           POST http://localhost:3000/authUser/register
+       body:
+       ``` js
+           {
+               "username": "tate",
+                "first_name": "logan",
+                "last_name": "morrison",
+                "email": "logan@gmail.com",
+                "password": "12345678"
+           }
+       ```
 
-            POST http://localhost:3000/api/login  
-        body:
-        ``` js
-            {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
-            }
-        ```
-- RUTINAS
-    - RECUPERAR RUTINAS  
+  - LOGIN
 
-            GET http://localhost:3000/api/rutina
+          POST http://localhost:3000/users/login
 
-    - ...
-</details>
+    body:
+
+    ```js
+        {
+
+         "email": "romeroz@gmail.com",
+         "password": "12345678"
+
+
+        }
+    ```
+
+  - USER PROFILE
+
+          GET http://localhost:3000/api/users/1
+
+  - UPDATE PROFILE
+
+          PATCH http://localhost:3000/api/users/10
+
+    body:
+
+    ```js
+         {
+         "username": "ydy",
+         "first_name": "marleydy",
+         "last_name": "romero",
+         "email": "romerz@gmail.com",
+         "password": "12345678"
+        }
+    ```
+
+  - APPOINTMENT CREATION
+
+          POST http://localhost:3000/appointments/
+
+    body:
+
+    ```js
+        {
+
+              "user_id": 1,
+              "tatuate_workers_id": 1,
+              "appointment_date": "2024-04-17 10:30:00"
+
+        }
+    ```
+
+  - APPOINTMENT UPDATE
+
+          PATCH http://localhost:3000/appointment/1
+
+    body:
+
+    ```js
+        {
+
+              "user_id": 1,
+              "tatuate_workers": 2,
+              "appointment_date": "2024-04-14 12:30:00"
+
+        }
+    ```
+
+  - APPOINTMENT DELETE
+
+         DELETE http://localhost:3000/appointment/1
+
+  - APPOINTMENT FOR USERS
+
+         GET http://localhost:3000/appointment/users/1
+
+  - APPOINTMENT FOR TATUATE_WORKERS
+
+         GET http://localhost:3000/appointment/worker/1
+
+  </details>
+  ```
 
 ## Futuras funcionalidades
-[ ] Añadir create book  
-[ ] Añadir logs  con winston  
-[ ] Validaciones de la solicitud con express-validator  
-[ ] ...
+ 
+[ ] Añadir admin, superadmin 
+[ ] Crear Galeria de tatuajes
 
-## Contribuciones
-Las sugerencias y aportaciones son siempre bienvenidas.  
-
-Puedes hacerlo de dos maneras:
-
-1. Abriendo una issue
-2. Crea un fork del repositorio
-    - Crea una nueva rama  
-        ```
-        $ git checkout -b feature/nombreUsuario-mejora
-        ```
-    - Haz un commit con tus cambios 
-        ```
-        $ git commit -m 'feat: mejora X cosa'
-        ```
-    - Haz push a la rama 
-        ```
-        $ git push origin feature/nombreUsuario-mejora
-        ```
-    - Abre una solicitud de Pull Request
 
 ## Licencia
-Este proyecto se encuentra bajo licencia de "Mi Nombre"
 
-## Webgrafia:
-Para conseguir mi objetivo he recopilado información de:
-- link a repositorios 
-- link a documentacion de librerias externas
-- ...
+Este proyecto se encuentra bajo licencia de "Marlendyz Herlendyz Perez Romero"
 
-## Desarrollo:
-
-``` js
- const developer = "datata";
-
- console.log("Desarrollado por: " + datata);
-```  
 
 ## Agradecimientos:
 
-Agradezco a mis compañeros el tiempo dedicado a este proyecto:
+Agradezco a mi compañeros el tiempo dedicado a este proyecto:
 
-- *Jose*  
-<a href="https://github.com/Dave86dev" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
-
+- _Reynaldo_  
+  <a href="https://github.com/ReynaldoMunozF" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
