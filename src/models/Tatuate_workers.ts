@@ -1,11 +1,11 @@
 import {BaseEntity, Entity, PrimaryGeneratedColumn, Column,OneToMany, CreateDateColumn,UpdateDateColumn}
      from "typeorm";
-  // import { Appointment } from "./Appointments";
+  import { Appointment } from "./Appointments";
   
   @Entity("tatuate_workers")
   export class Tatuate_workers {
     @PrimaryGeneratedColumn()
-    id?: number;
+    id!: number;
   
     @Column()
     nickname!: string;
@@ -31,7 +31,7 @@ import {BaseEntity, Entity, PrimaryGeneratedColumn, Column,OneToMany, CreateDate
    @Column()
     active?: Number;
   
-    // @OneToMany(() => Appointment, (appointment) => appointment.user)
-    // appointments?: Appointment[];
+     @OneToMany(() => Appointment, (appointment) => appointment.user)
+     appointments?: Appointment[];
   }
   
