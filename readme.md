@@ -10,12 +10,10 @@
     <li><a href="#instalación-en-local">Instalación</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
-    <li><a href="#contribuciones">Contribuciones</a></li>
     <li><a href="#licencia">Licencia</a></li>
-    <li><a href="#webgrafia">Webgrafia</a></li>
     <li><a href="#desarrollo">Desarrollo</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+   
   </ol>
 </details>
 
