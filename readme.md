@@ -60,7 +60,6 @@ Tecnologías utilizadas:
 <details>
 <summary>Endpoints</summary>
 
-- AUTH
 
 - REGISTER USER
 
