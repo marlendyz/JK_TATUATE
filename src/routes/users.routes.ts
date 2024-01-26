@@ -13,5 +13,4 @@ router.post("/", userController.create);
 router.patch("/:id", userController.update);
 router.delete("/:id", userController.delete);
 
-
 export default router;

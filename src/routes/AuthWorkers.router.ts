@@ -1,6 +1,5 @@
 import express from "express";
-import {AuthWorkController} from "../controllers/AuthWorkerController";
-
+import { AuthWorkController } from "../controllers/AuthWorkerController";
 
 // -----------------------------------------------------------------------------
 

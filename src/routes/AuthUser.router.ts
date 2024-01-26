@@ -9,5 +9,4 @@ const authUserController = new AuthUserController();
 router.post("/register", authUserController.register);
 router.post("/login", authUserController.login);
 
-
 export default router;
