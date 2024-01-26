@@ -11,7 +11,6 @@
     <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
     <li><a href="#licencia">Licencia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
    
   </ol>
@@ -24,12 +23,6 @@ Este proyecto requería una API funcional conectada a una base de datos.
 ## Sobre el proyecto
 
 Decidí crear una aplicación web para ayudar a los amantes de los tatuajes, en donde les sea mas facil crear, modificar y borrar citas, asi como ver que citas son las que tiene. Todo con la intencion de aprovechar el tiempo pues es estos dias el tiempo es oro.
-
-## Deploy 🚀
-
-<div align="center">
-    <a href="https://www.google.com"><strong>Url a producción </strong></a>🚀🚀🚀
-</div>
 
 ## Stack
 
@@ -52,7 +45,7 @@ Tecnologías utilizadas:
 
 ## Diagrama BD
 
-!['imagen-db'](.)
+!['imagen-db'](./img/tatuateimg.png)
 
 ## Instalación en local
 
