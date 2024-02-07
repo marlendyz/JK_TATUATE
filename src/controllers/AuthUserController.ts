@@ -2,12 +2,13 @@ import { Request, Response } from "express";
 import {
   CreateUserRequestBody,
   LoginUserRequestBody,
-  TokenData,
+  UserTokenData,
 } from "../types/types";
 import { User } from "../models/User";
 import { AppDataSource } from "../database/data-source";
 import bcrypt from "bcrypt";
 import { StatusCodes } from "http-status-codes";
+import jwt from "jsonwebtoken"
 
 export class AuthUserController {
   async register(
@@ -69,8 +70,18 @@ export class AuthUserController {
         });
       }
 
+      const tokenPayload: UserTokenData ={
+        user_id: user.id?.toString() as string,
+        name: user.username
+      };
+
+      const token = jwt.sign(tokenPayload,"123",{
+        expiresIn: "3h",
+      });
+
       res.status(StatusCodes.OK).json({
         message: "login succesfully",
+        token
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
