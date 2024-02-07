@@ -28,11 +28,12 @@ export interface LoginUserRequestBody {
 }
 
 export interface UserTokenData{
-  user_id: string;
-  name: string;
+  users_id: string;
+  
 }
 
-export interface TokenData {
-  userId: string;
-  userRoles: string[];
+export interface WorkerTokenData {
+  tatuate_worker_id: string
+  ;
+
 }

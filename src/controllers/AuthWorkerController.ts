@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
-import { CreateWorkersRequestBody, LoginUserRequestBody } from "../types/types";
+import { CreateWorkersRequestBody, LoginUserRequestBody, WorkerTokenData } from "../types/types";
 import { Tatuate_workers } from "../models/Tatuate_workers";
 import { AppDataSource } from "../database/data-source";
 import bcrypt from "bcrypt";
 import { StatusCodes } from "http-status-codes";
+import jwt from "jsonwebtoken";
+
 
 export class AuthWorkController {
   async register(
@@ -26,11 +28,11 @@ export class AuthWorkController {
       await workerRepository.save(newArtist);
 
       res.status(StatusCodes.CREATED).json({
-        message: "Artist created succesfully",
+        message: "Worker created succesfully",
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        message: "Error while creating Artist",
+        message: "Error while creating Worker",
       });
     }
   }
@@ -47,26 +49,37 @@ export class AuthWorkController {
           message: "Email or password is required",
         });
       }
-      const user = await workerRepository.findOne({
+      const worker = await workerRepository.findOne({
         where: {
           email: email,
         },
       });
-      if (!user) {
+      if (!worker) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: "Bad email or password",
         });
       }
-      const isPasswordValid = bcrypt.compareSync(password, user.password);
+      const isPasswordValid = bcrypt.compareSync(password, worker.password);
 
       if (!isPasswordValid) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: "Bad email or password",
         });
       }
+      
+      const tokenPayload : WorkerTokenData={
+        tatuate_worker_id : worker.id?.toString() as string,
+
+      }
+
+      const token = jwt.sign(tokenPayload, "123",{
+        expiresIn: "3h"
+      });
+
 
       res.status(StatusCodes.OK).json({
         message: "login succesfully",
+        token
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

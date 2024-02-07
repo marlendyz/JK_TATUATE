@@ -71,8 +71,8 @@ export class AuthUserController {
       }
 
       const tokenPayload: UserTokenData ={
-        user_id: user.id?.toString() as string,
-        name: user.username
+        users_id: user.id?.toString() as string,
+        
       };
 
       const token = jwt.sign(tokenPayload,"123",{
